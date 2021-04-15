@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>Temperature</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script src="temperature.js"></script>
+    <style type="text/css">
+        span.finished { cursor: pointer; color: blue; text-decoration: underline; }
+        div.eci input { visibility: hidden; }
+        div.eci:hover input { visibility: visible; }
+    </style>
+</head>
+<body ng-app="temperature" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+    <div class="page-header"> 
+        <h1>Temperature</h1>
+    </div>
+    <a href="profile.html">Profile</a>
+    <div class="temp" ng-model="temp">
+        <p>Temperature: {{temp}}</p>
+    </div>
+    <h4>Recent Temperatures</h4>
+    <div ng-repeat="temperature in temperatures | orderBy: '-ordinal'">
+        {{temperature.timestamp}} &middot; {{temperature.temperature}}
+    </div>
+
+    <h4>Threshold Violations</h4>
+    <div ng-repeat="temperature in violations | orderBy: '-ordinal'">
+        {{temperature.timestamp}} &middot; {{temperature.temperature}}
+    </div>
+
+    <div class="eci">
+        <input type="text" ng-model="eci" size="29"></input>
+    </div>
+</div>
+</div>
+</body>
+</html>

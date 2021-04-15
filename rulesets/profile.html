@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Profile</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script src="profile.js"></script>
+    <style type="text/css">
+        span.finished { cursor: pointer; color: blue; text-decoration: underline; }
+    </style>
+</head>
+<body ng-app="profile" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<div class="page-header"> 
+    <h1>Profile</h1>
+</div>
+<a href="pico-ui.html">Temperatures</a>
+    <div>Name: {{profile.name}}</div>
+    <div>Location: {{profile.location}}</div>
+    <div>Threshold: {{profile.threshold}}</div>
+    <div>Phone Number: {{profile.number}}</div>
+    <form ng-submit="updateProfile()" style = "margin-top:30px;">
+        <input type="text" ng-model="newProfile.name" placeholder="name"></input>
+        <input type="text" ng-model="newProfile.location" placeholder="location"></input>
+        <input type="number" ng-model="newProfile.threshold" placeholder="threshold"></input>
+        <input type="text" ng-model="newProfile.number" placeholder="phone number"></input>
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+</div>
+</body>
+</html>

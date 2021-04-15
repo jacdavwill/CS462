@@ -11,7 +11,7 @@ ruleset wovyn_base {
   }
 
   global {
-    temperature_threshold = 75
+    temperature_threshold = 90
     phone_number = "8019038035"
   }
     
@@ -61,10 +61,10 @@ ruleset wovyn_base {
       high_temp = event:attrs{"temperature"}{"tempF"}
       msg = <<Uh, oh! Detected a really high temperature (#{high_temp})!>>
     }
-    // twilio:sendMessage(phone_number, "18159009380", msg) setting(response)
+    twilio:sendMessage(phone_number, "18159009380", msg) setting(response)
     fired {
       log info "sent warning message"
-      // log info response
+      log info response
     }
   }
 }
